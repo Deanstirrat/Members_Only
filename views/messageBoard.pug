@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  h3 Hello #{currentUser.firstName}
+  a.btn.btn-primary.me-3(href="/board/newPost") new post
+  if !currentUser.member
+    a.btn.btn-warning.me-3(href="/users/unlock") unlock
+  a.btn.btn-danger(href="/users/logout") log-out
+  .container
+    if messages
+        for message in messages
+            .row
+                h4=message.title
+                p=message.message
+                if currentUser.member
+                  p #{message.postedBy.fullName} - #{Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: 'short'}).format(message.dateTime)}
+                else
+                   p REDACTED - #{Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: 'short'}).format(message.dateTime)}
+
+

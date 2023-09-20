@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  if errors
+   ul
+    for error in errors
+     li!= error.msg
+  form(role='form' method='POST' action='')
+    div.form-group.mb-3
+      label(for='first name') First name:
+      input#firstName.form-control(type='text', placeholder='first name' name='firstName')
+    div.form-group.mb-3
+      label(for='last name') Last name:
+      input#lastName.form-control(type='text', placeholder='last name' name='lastName')
+    div.form-group.mb-3
+      label(for='email') Email:
+      input#email.form-control(type='email', placeholder='name@email.com' name='email')
+    div.form-group.mb-3
+      label(for='password') Password:
+      input#password.form-control(type='text', placeholder='password' name='password')
+    div.form-group.mb-3
+      label(for='confirm password') Confirm password:
+      input#password-confirm.form-control(type='text', placeholder='confirm password' name='passwordConfirm')
+    div.row.justify-content.start
+      .col-1
+        button.col.btn.btn-primary(type="submit") Submit
+      .col
+        a.col.btn.btn-secondary(type="button", href='/') Close

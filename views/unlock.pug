@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  if errors
+   ul
+    for error in errors
+     li!= error.msg
+  form(role='form' method='POST' action='')
+    div.form-group.mb-3
+      label(for='passcode') Enter secret passcode:
+      input#passcode.form-control(type='text', placeholder='xxxxxx' name='passcode')
+    div.row.justify-content.start
+      .col-1
+        button.col.btn.btn-primary(type="submit") Submit
+      .col
+        a.col.btn.btn-secondary(type="button", href='/board') Close
